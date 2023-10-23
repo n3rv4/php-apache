@@ -26,9 +26,8 @@ COPY _php/vars.ini /usr/local/etc/php/conf.d/vars.ini
 
 # Install extensions
 RUN    docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install exif gd intl mbstring opcache pcntl pdo_mysql zip \
-    && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
-    && docker-php-ext-install ldap \
+    && docker-php-ext-configure ldap \
+    && docker-php-ext-install exif gd ldap intl mbstring opcache pcntl pdo_mysql zip \
     && pecl install -o -f redis \
     && docker-php-ext-enable redis
 

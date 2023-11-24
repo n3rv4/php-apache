@@ -1,4 +1,4 @@
-FROM arm64v8/php:8.2-apache
+FROM arm64/php:8.2-apache
 
 # Set working directory
 WORKDIR /app

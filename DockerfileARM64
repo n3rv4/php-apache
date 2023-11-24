@@ -12,15 +12,6 @@ RUN apt-get update && apt-get install -y \
 
 RUN mkdir -p /var/log/supervisor
 
-RUN wget https://www.python.org/ftp/python/2.7.8/Python-2.7.8.tgz\
-    && tar -zxvf Python-2.7.8.tgz\
-    && cd Python-2.7.8\
-    && ./configure \
-    && make \
-    && make install
-
-RUN curl https://get.volta.sh | bash
-
 COPY _php/timezone.ini /usr/local/etc/php/conf.d/timezone.ini
 COPY _php/vars.ini /usr/local/etc/php/conf.d/vars.ini
 

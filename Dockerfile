@@ -32,7 +32,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/pear
 
-COPY devops/php-apache/openssl.cnf /etc/ssl/openssl.cnf
+COPY openssl.cnf /etc/ssl/openssl.cnf
 
 ARG SERVER_NAME=localhost
 

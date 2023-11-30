@@ -1,3 +1,3 @@
 # php-apache
 
-From php:8.2.3-apache with dev tools
+From php:8.3-apache with dev tools

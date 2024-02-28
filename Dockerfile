@@ -21,7 +21,7 @@ COPY _php/vars.ini /usr/local/etc/php/conf.d/vars.ini
 # Install extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-configure ldap && \
-    docker-php-ext-install exif gd ldap intl mbstring opcache pcntl pdo_mysql zip && \
+    docker-php-ext-install exif gd ldap intl mbstring opcache pcntl pdo_mysql sysvsem zip && \
     pecl install -o -f redis && \
     docker-php-ext-enable redis \
     ;
@@ -32,12 +32,12 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/pear
 
-COPY devops/php-apache/openssl.cnf /etc/ssl/openssl.cnf
+#COPY devops/php-apache/openssl.cnf /etc/ssl/openssl.cnf
 
-ARG SERVER_NAME=localhost
+#ARG SERVER_NAME=localhost
 
-RUN openssl req -x509 -out /etc/ssl/certs/smart.bt.wip.crt -keyout /etc/ssl/private/smart.bt.wip.key \
-  -newkey rsa:2048 -nodes -sha256 \
-  -subj "/C=GB/ST=Paris/L=Paris/O=Global Security/OU=IT Department/CN=$SERVER_NAME"
+#RUN openssl req -x509 -out /etc/ssl/certs/smart.bt.wip.crt -keyout /etc/ssl/private/smart.bt.wip.key \
+#  -newkey rsa:2048 -nodes -sha256 \
+#  -subj "/C=GB/ST=Paris/L=Paris/O=Global Security/OU=IT Department/CN=$SERVER_NAME"
 
 EXPOSE 80 443
